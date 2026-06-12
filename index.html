@@ -1270,19 +1270,26 @@
   .shop-now-btn:hover::after { transform: translateX(2px); }
 
   /* Public showcase: cart icon button — matches demo style; colors adapt to creator's theme */
+  .showcase-price-cart-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+  }
   .showcase-cart-btn {
     background: var(--bg);
     color: var(--fg);
     border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border-radius: 9px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     padding: 0;
-    margin-top: 0.4rem;
+    flex-shrink: 0;
     box-shadow:
       0 6px 16px rgba(0, 0, 0, 0.45),
       0 2px 4px rgba(0, 0, 0, 0.25),
@@ -1602,7 +1609,419 @@
     background: var(--bg);
   }
 
-  /* Texture color customization panel */
+  /* Image input — URL field + inline upload button (side by side) */
+  .image-input-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+  .image-input-row input[type="text"],
+  .image-input-row input:not([type]) {
+    flex: 1;
+    min-width: 0;
+  }
+  .upload-btn-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--bg);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+    color: var(--accent);
+    padding: 0 0.85rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+    white-space: nowrap;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .upload-btn-inline:hover {
+    background: color-mix(in srgb, var(--accent) 8%, var(--bg));
+    border-color: var(--accent);
+  }
+  .upload-btn-inline svg { flex-shrink: 0; }
+
+  /* VIP Payment Modal */
+  .vip-payment-modal { max-width: 480px; }
+  .pay-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .pay-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.25;
+  }
+  .pay-sub {
+    color: var(--fg-muted);
+    font-size: 0.85rem;
+    margin-bottom: 1.4rem;
+    line-height: 1.5;
+  }
+  .pay-form { display: flex; flex-direction: column; gap: 0.85rem; }
+  .pay-field { display: flex; flex-direction: column; gap: 0.35rem; flex: 1; min-width: 0; }
+  .pay-field label {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    font-weight: 600;
+  }
+  .pay-field input {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--fg);
+    padding: 0.65rem 0.85rem;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-variant-numeric: tabular-nums;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .pay-field input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent);
+  }
+  .pay-field-row { display: flex; gap: 0.6rem; }
+  .pay-field-row .pay-field { flex: 1; min-width: 0; }
+  .pay-error {
+    color: #f5b94a;
+    font-size: 0.82rem;
+    min-height: 1.1rem;
+    padding-left: 0.1rem;
+  }
+  .pay-submit {
+    margin-top: 0.3rem;
+  }
+  .pay-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  .pay-legal {
+    margin-top: 1rem;
+    font-size: 0.72rem;
+    color: var(--fg-dim);
+    line-height: 1.55;
+  }
+  .pay-prototype-note {
+    margin-top: 1rem;
+    padding: 0.7rem 0.85rem;
+    background: rgba(245, 185, 74, 0.08);
+    border: 1px solid rgba(245, 185, 74, 0.3);
+    border-radius: 4px;
+    color: #f5b94a;
+    font-size: 0.72rem;
+    line-height: 1.55;
+  }
+  .pay-prototype-note strong { color: #fbcf78; }
+
+  /* Source tier badges — preview in Add Product form */
+  .source-tier-preview {
+    margin-top: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 0.95rem;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+  }
+  .source-tier-preview.tier-premium {
+    border-color: rgba(167, 139, 250, 0.5);
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.08) 0%, rgba(167, 139, 250, 0.02) 100%);
+  }
+  .source-tier-preview.tier-verified {
+    border-color: rgba(212, 175, 55, 0.5);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.02) 100%);
+  }
+  .source-tier-preview.tier-generic {
+    border-color: var(--border);
+    background: var(--bg-elevated);
+  }
+  .source-tier-preview .tier-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .source-tier-preview.tier-premium .tier-icon { background: #a78bfa; color: #1a1023; }
+  .source-tier-preview.tier-verified .tier-icon { background: var(--accent); color: var(--bg); }
+  .source-tier-preview.tier-generic .tier-icon { background: var(--border); color: var(--fg-muted); }
+  .source-tier-preview .tier-text { flex: 1; min-width: 0; }
+  .source-tier-preview .tier-label { font-size: 0.85rem; font-weight: 600; color: var(--fg); }
+  .source-tier-preview .tier-sub { font-size: 0.72rem; color: var(--fg-muted); margin-top: 1px; }
+  .source-tier-preview .tier-upgrade-link {
+    font-size: 0.72rem;
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .source-tier-preview .tier-upgrade-link:hover { color: var(--accent-bright); }
+
+  /* Source tier chip — small badge on dashboard product cards */
+  .source-tier-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    border: 1px solid;
+  }
+  .source-tier-chip.tier-premium {
+    background: rgba(167, 139, 250, 0.12);
+    color: #c4afff;
+    border-color: rgba(167, 139, 250, 0.4);
+  }
+  .source-tier-chip.tier-verified {
+    background: rgba(212, 175, 55, 0.12);
+    color: var(--accent-bright);
+    border-color: rgba(212, 175, 55, 0.4);
+  }
+  .source-tier-chip.tier-generic {
+    background: var(--bg);
+    color: var(--fg-muted);
+    border-color: var(--border);
+  }
+
+  /* Detail page trust badge — customer-facing */
+  .detail-trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 0.6rem 0 1rem;
+    border: 1px solid;
+  }
+  .detail-trust-badge.tier-premium {
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.12), rgba(167, 139, 250, 0.04));
+    color: #c4afff;
+    border-color: rgba(167, 139, 250, 0.5);
+  }
+  .detail-trust-badge.tier-verified {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(212, 175, 55, 0.04));
+    color: var(--accent-bright);
+    border-color: rgba(212, 175, 55, 0.5);
+  }
+  .detail-trust-badge.tier-generic {
+    background: var(--bg-elevated);
+    color: var(--fg-muted);
+    border-color: var(--border);
+  }
+
+  /* Sourcing guide modal */
+  .sourcing-guide-modal {
+    max-width: 720px;
+    max-height: 88vh;
+    overflow-y: auto;
+  }
+  .sg-hero {
+    padding-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .sg-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+  .sg-hero h2 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
+  }
+  .sg-lead { color: var(--fg-muted); font-size: 0.92rem; line-height: 1.55; }
+
+  .sg-tier-section {
+    margin-bottom: 1.75rem;
+    padding: 1.25rem;
+    border-radius: 6px;
+    border: 1px solid;
+  }
+  .sg-tier-section.tier-premium {
+    border-color: rgba(167, 139, 250, 0.4);
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.05) 0%, transparent 100%);
+  }
+  .sg-tier-section.tier-verified {
+    border-color: rgba(212, 175, 55, 0.4);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%);
+  }
+  .sg-tier-section.tier-generic {
+    border-color: var(--border);
+    background: var(--bg-elevated);
+  }
+  .sg-tier-head {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 0.6rem;
+  }
+  .sg-tier-marker {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .tier-premium .sg-tier-marker { background: #a78bfa; color: #1a1023; }
+  .tier-verified .sg-tier-marker { background: var(--accent); color: var(--bg); }
+  .tier-generic .sg-tier-marker { background: var(--border); color: var(--fg-muted); }
+  .sg-tier-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .sg-tier-sub { color: var(--fg-muted); font-size: 0.82rem; margin-top: 2px; }
+  .sg-tier-desc {
+    color: var(--fg-muted);
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 0.9rem;
+  }
+
+  .sg-source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.6rem;
+  }
+  .sg-source {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.75rem 0.85rem;
+    text-decoration: none;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .sg-source:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .sg-source-name {
+    font-weight: 600;
+    color: var(--fg);
+    font-size: 0.92rem;
+  }
+  .sg-source-meta {
+    font-size: 0.74rem;
+    color: var(--fg-muted);
+    line-height: 1.35;
+  }
+  .sg-source-cta {
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin-top: 0.3rem;
+    letter-spacing: 0.04em;
+  }
+  .sg-bottom {
+    margin-top: 1rem;
+    padding: 1rem 1.2rem;
+    background: var(--bg-elevated);
+    border-radius: 4px;
+    border-left: 3px solid var(--accent);
+  }
+  .sg-bottom p { color: var(--fg); font-size: 0.88rem; line-height: 1.6; }
+  .sg-bottom strong { color: var(--accent-bright); }
+
+  /* Variant picker (AliExpress imports) */
+  .variant-picker {
+    margin-top: 1rem;
+    padding: 1rem 1.1rem;
+    background: var(--bg-elevated);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+    border-radius: 4px;
+  }
+  .variant-picker-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.7rem;
+  }
+  .variant-picker-title {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: var(--fg);
+    font-weight: 500;
+  }
+  .variant-picker-sub {
+    font-size: 0.72rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .variant-picker-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .variant-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--fg);
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+  .variant-chip:hover {
+    border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+    transform: translateY(-1px);
+  }
+  .variant-chip.active {
+    background: color-mix(in srgb, var(--accent) 18%, var(--bg));
+    border-color: var(--accent);
+    color: var(--fg);
+  }
+  .variant-chip-label {
+    font-weight: 500;
+  }
+  .variant-chip-price {
+    color: var(--accent);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .variant-chip.active .variant-chip-price {
+    color: var(--accent-bright);
+  }
   .texture-colors-panel {
     background: var(--bg-elevated);
     border: 1px solid var(--border);
@@ -2433,6 +2852,47 @@
     margin-bottom: 1rem;
     font-weight: 500;
   }
+  .manage-edit-toggle {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--fg-muted);
+    padding: 0.35rem 0.7rem;
+    border-radius: 4px;
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+  }
+  .manage-edit-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .manage-edit-toggle.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 8%, var(--bg-elevated));
+  }
+  .manage-edit-toggle svg {
+    flex-shrink: 0;
+  }
+  .manage-edit-panel {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 1.25rem;
+    border-radius: 4px;
+    margin: 1rem 0 1.5rem;
+  }
+  .manage-edit-panel .field { margin-bottom: 1rem; }
+  .manage-edit-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
   .manage-reviews-summary {
     display: flex;
     align-items: center;
@@ -2981,6 +3441,7 @@
     background: var(--bg-soft);
     background-size: cover;
     background-position: center;
+    position: relative;
   }
   .product-card-mini .info { padding: 1rem; }
   .product-card-mini h4 {
@@ -3027,18 +3488,56 @@
     font-size: 0.85rem;
   }
   .product-card-mini.paused {
-    border-color: rgba(220,38,38,0.4);
-    background: rgba(220,38,38,0.04);
+    border-color: rgba(245, 185, 74, 0.5);
+    background: rgba(245, 185, 74, 0.05);
   }
   .product-card-mini.paused .img {
-    opacity: 0.5;
-    filter: grayscale(0.6);
+    opacity: 0.85;
+  }
+  .product-card-mini.archived {
+    border-color: color-mix(in srgb, var(--accent) 28%, var(--border));
+    background: color-mix(in srgb, var(--accent) 4%, var(--bg-elevated));
+  }
+  .product-card-mini.archived .img {
+    filter: grayscale(0.85) brightness(0.55);
+    position: relative;
+  }
+  .archive-lock-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-bright);
+    pointer-events: none;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  }
+  .archive-lock-overlay svg {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  }
+  .refresh-needed-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f5b94a;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.35) 100%);
+  }
+  .refresh-needed-overlay svg {
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.65));
+    animation: refreshPulse 1.8s ease-in-out infinite;
+  }
+  @keyframes refreshPulse {
+    0%, 100% { transform: scale(1); opacity: 0.92; }
+    50% { transform: scale(1.08); opacity: 1; }
   }
   .paused-badge {
     display: inline-block;
-    background: rgba(220,38,38,0.15);
-    color: var(--danger);
-    border: 1px solid rgba(220,38,38,0.4);
+    background: rgba(245, 185, 74, 0.15);
+    color: #f5b94a;
+    border: 1px solid rgba(245, 185, 74, 0.5);
     padding: 0.25rem 0.5rem;
     font-size: 0.65rem;
     font-weight: 600;
@@ -3046,6 +3545,11 @@
     text-transform: uppercase;
     border-radius: 2px;
     margin-bottom: 0.5rem;
+  }
+  .paused-badge.archived-badge {
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    color: var(--accent-bright);
+    border-color: color-mix(in srgb, var(--accent) 40%, transparent);
   }
   .price-change-note {
     font-size: 0.75rem;
@@ -3168,6 +3672,33 @@
   .imported-badge::before {
     content: '\2713';
     font-size: 0.85rem;
+  }
+  .imported-badge.warn {
+    color: #f5b94a;
+  }
+  .imported-badge.warn::before {
+    content: '';
+  }
+  .imported-badge a {
+    color: var(--fg-muted);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 0.78rem;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
+    transition: color 0.15s ease;
+  }
+  .imported-badge a:hover {
+    color: var(--accent-bright);
+  }
+  .field input.manual-entry {
+    border-color: rgba(245, 185, 74, 0.5);
+    background: rgba(245, 185, 74, 0.04);
+  }
+  .field input.manual-entry:focus {
+    border-color: #f5b94a;
+    box-shadow: 0 0 0 2px rgba(245, 185, 74, 0.18);
   }
   .url-row {
     display: flex;
@@ -3548,6 +4079,33 @@
     border-radius: 2px;
     z-index: 1000;
     animation: toastIn 0.3s ease;
+  }
+  .toast.toast-undo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 0.6rem 0.6rem 1.25rem;
+  }
+  .toast-msg {
+    color: var(--fg);
+  }
+  .toast-undo-btn {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    padding: 0.4rem 0.85rem;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: filter 0.15s ease, transform 0.15s ease;
+  }
+  .toast-undo-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
   }
   @keyframes toastIn { from { opacity: 0; transform: translate(-50%, 10px); } }
 
@@ -4436,6 +4994,167 @@ function getUserTheme(user) {
 /* ============================================================
    PRODUCT SOURCE FETCHING — shared by Add and Verify flows
    ============================================================ */
+// ============================================================
+// SCRAPING / PRODUCT IMPORT
+// ============================================================
+// ScrapingBee API key — used to fetch product pages bypassing anti-bot.
+// SECURITY NOTE: this key is visible in the deployed HTML. Acceptable for
+// the private prototype phase. When moving to production / public launch,
+// route ScrapingBee calls through a backend so the key isn't exposed.
+const SCRAPINGBEE_KEY = 'IP948RVR8ZQ82RYN40AZZ410O9OBRP7KOB13AGOQFMCEICLLCO7DC44BBRGTC0NP7BD8UDIPAENTO04Y';
+
+// Fetch page HTML via ScrapingBee (renders JS, bypasses anti-bot).
+// `premium` param uses premium proxies (eats more credits but works on hostile sites like AliExpress).
+async function tryScrapingBee(url, opts = {}) {
+  if (!SCRAPINGBEE_KEY) throw new Error('No ScrapingBee key configured');
+  const premium = opts.premium !== false; // default to premium for reliability
+  const params = new URLSearchParams({
+    api_key: SCRAPINGBEE_KEY,
+    url: url,
+    render_js: 'true',
+    premium_proxy: premium ? 'true' : 'false',
+    country_code: 'us'
+  });
+  const resp = await fetch(`https://app.scrapingbee.com/api/v1/?${params.toString()}`);
+  if (!resp.ok) {
+    const errText = await resp.text().catch(() => '');
+    throw new Error(`ScrapingBee ${resp.status}: ${errText.slice(0, 200)}`);
+  }
+  const html = await resp.text();
+  if (!html || html.length < 200) throw new Error('ScrapingBee returned empty');
+  return html;
+}
+
+// Extract AliExpress variants from rendered HTML.
+// AliExpress embeds product data in window.runParams or inline scripts.
+// We look for the SKU array with current sale prices per variant.
+function extractAliExpressVariants(html) {
+  const variants = [];
+  try {
+    // Format A: skuProductPropertyList + skuPriceList (most common)
+    const skuPropsMatch = html.match(/skuProductPropertyList["']?\s*[:=]\s*(\[[\s\S]*?\])\s*[,\}]/);
+    const skuListMatch = html.match(/skuPriceList["']?\s*[:=]\s*(\[[\s\S]*?\])\s*[,\}]/);
+    if (skuPropsMatch && skuListMatch) {
+      const props = JSON.parse(skuPropsMatch[1]);
+      const list = JSON.parse(skuListMatch[1]);
+      for (const sku of list) {
+        const labelParts = [];
+        const skuPropIds = (sku.skuPropIds || sku.skuAttr || '').toString();
+        for (const prop of props) {
+          const val = (prop.skuPropertyValues || []).find(v =>
+            skuPropIds.includes(`#${v.propertyValueId}`) ||
+            skuPropIds.includes(v.propertyValueIdLong)
+          );
+          if (val) labelParts.push(val.propertyValueDisplayName || val.propertyValueName);
+        }
+        // Try multiple price paths — AliExpress changes their format often
+        const priceCandidates = [
+          sku.skuVal?.actSkuCalPrice,
+          sku.skuVal?.skuActivityAmount?.value,
+          sku.skuVal?.skuAmount?.value,
+          sku.skuVal?.skuCalPrice,
+          sku.skuVal?.actSkuMultiCurrencyCalPrice,
+          sku.salePrice?.minActivityAmount?.value,
+          sku.salePrice?.minPrice?.value,
+        ];
+        let price = null;
+        for (const cand of priceCandidates) {
+          if (cand != null) {
+            const p = parseFloat(String(cand).replace(/[^0-9.]/g, ''));
+            if (!isNaN(p) && p > 0) { price = p; break; }
+          }
+        }
+        variants.push({
+          sku: String(sku.skuId || sku.skuIdStr || ''),
+          label: labelParts.join(' · ') || 'Variant',
+          price: price
+        });
+      }
+    }
+    // Format B: simpler sku array fallback
+    if (variants.length === 0) {
+      const altMatch = html.match(/skus?\s*[:=]\s*(\[[\s\S]{0,5000}?\])\s*[,\}]/i);
+      if (altMatch) {
+        try {
+          const parsed = JSON.parse(altMatch[1]);
+          for (const item of parsed.slice(0, 30)) {
+            if (item && (item.sku_id || item.skuId || item.id)) {
+              variants.push({
+                sku: String(item.sku_id || item.skuId || item.id),
+                label: item.name || item.title || item.spec || 'Variant',
+                price: parseFloat(item.price || item.sale_price || item.skuCalPrice) || null
+              });
+            }
+          }
+        } catch (e) {}
+      }
+    }
+  } catch (e) {
+    console.warn('[Fonce] Variant extraction failed:', e.message);
+  }
+  return variants;
+}
+
+// Extract a raw price from AliExpress HTML when structured data fails.
+// AliExpress embeds prices in many different JSON keys depending on the product/region.
+// Returns the cheapest plausible USD-like price found (current sale price).
+function extractAliExpressRawPrice(html) {
+  const candidates = [];
+  const pushPrice = (raw) => {
+    if (raw == null) return;
+    const p = parseFloat(String(raw).replace(/[^0-9.]/g, ''));
+    if (!isNaN(p) && p > 0 && p < 100000) candidates.push(p);
+  };
+
+  // Patterns that AliExpress uses for the CURRENT sale price (not pre-discount)
+  const patterns = [
+    /"formattedActivityPrice":\s*"\$?([\d.,]+)/g,
+    /"formattedPrice":\s*"\$?([\d.,]+)/g,
+    /"actSkuMultiCurrencyDisplayPrice":\s*"\$?([\d.,]+)/g,
+    /"actSkuCalPrice":\s*"?([\d.]+)/g,
+    /"skuActivityAmount":\s*\{\s*"value":\s*([\d.]+)/g,
+    /"minActivityAmount":\s*\{\s*"value":\s*([\d.]+)/g,
+    /"discountPrice":\s*\{?\s*"?(?:value|amount)"?:\s*"?([\d.]+)/g,
+    /"salePrice":\s*"?\$?([\d.]+)/g,
+    /"productSalePrice":\s*"?\$?([\d.]+)/g,
+  ];
+  for (const re of patterns) {
+    let m;
+    while ((m = re.exec(html)) !== null) pushPrice(m[1]);
+  }
+
+  if (candidates.length === 0) return null;
+  // Return the most common (mode) or the minimum — both work to dodge inflated prices
+  // Use the median for robustness against outliers
+  candidates.sort((a, b) => a - b);
+  return candidates[Math.floor(candidates.length / 2)];
+}
+
+// Parse AliExpress URL params to figure out which variant the creator copied.
+// pdp_npi format: 6@dis!USD!sale!discount!!!original!shipping!... ID@variant_offset
+// Returns { price, skuHint } — price is the variant's sale price, skuHint helps match
+function tryParseAliExpressUrl(url) {
+  if (!/aliexpress\./i.test(url)) return null;
+  try {
+    const u = new URL(url);
+    // First try direct sku_id query param
+    const skuId = u.searchParams.get('sku_id') || u.searchParams.get('skuId');
+    const npi = u.searchParams.get('pdp_npi');
+    if (!npi) return skuId ? { price: null, skuHint: skuId } : null;
+    const parts = npi.split('!');
+    let price = null;
+    for (let i = 0; i < parts.length - 1; i++) {
+      if (/^(USD|EUR|GBP|JPY|CAD|AUD|MXN|BRL|RUB|CNY|INR)$/i.test(parts[i])) {
+        const p = parseFloat(parts[i + 1]);
+        if (!isNaN(p) && p > 0) { price = p; break; }
+      }
+    }
+    return { price, skuHint: skuId };
+  } catch (e) {
+    return null;
+  }
+}
+
 function tryExtractPrice(data) {
   const candidates = [data?.price, data?.product?.price, data?.data?.price];
   for (const c of candidates) {
@@ -4673,22 +5392,79 @@ async function tryMicrolink(url) {
 async function fetchProductData(url) {
   if (!url || !/^https?:\/\//i.test(url)) throw new Error('Invalid URL');
 
-  let result = { title: null, image: null, description: null, price: null };
+  let result = { title: null, image: null, description: null, price: null, variants: [] };
   let strategiesFired = [];
+  let scrapingBeeHtml = null;
 
-  // Strategy 1: race all HTML proxies in parallel, parse each response, merge
+  // Strategy 1 (PRIMARY): ScrapingBee with JS rendering + premium proxies
+  // Handles AliExpress, Amazon-style hostile sites, JS-rendered pages.
   try {
-    const proxyResult = await tryProxiesInParallel(url);
-    result.title = result.title || proxyResult.title;
-    result.image = result.image || proxyResult.image;
-    result.description = result.description || proxyResult.description;
-    result.price = result.price || proxyResult.price;
-    strategiesFired.push('proxies');
+    scrapingBeeHtml = await tryScrapingBee(url, { premium: true });
+    const m = parseHtmlMeta(scrapingBeeHtml);
+    result.title = result.title || m.title;
+    result.image = result.image || m.image;
+    result.description = result.description || m.description;
+    result.price = result.price || m.price;
+    strategiesFired.push('scrapingbee');
   } catch (e) {
-    console.warn('[Fonce] Proxy chain failed:', e.message);
+    console.warn('[Fonce] ScrapingBee failed:', e.message);
   }
 
-  // Strategy 2: Microlink (server-side headless browser) — fills any remaining gaps
+  // Strategy 2: AliExpress — variant extraction + raw price fallback
+  // We OVERRIDE the meta-parsed price for AliExpress because JSON-LD often
+  // returns the pre-discount/list price, not the current sale price.
+  // We do NOT auto-pick the variant the creator was viewing — they choose
+  // which variant they want to sell in the picker UI.
+  if (scrapingBeeHtml && /aliexpress\./i.test(url)) {
+    try {
+      const variants = extractAliExpressVariants(scrapingBeeHtml);
+      if (variants.length > 0) {
+        result.variants = variants;
+        const variantPrices = variants.map(v => v.price).filter(p => p && p > 0);
+        if (variantPrices.length > 0) {
+          // Use lowest variant price as the placeholder source price.
+          // Creator will pick a variant which updates the price.
+          // OVERRIDES the meta price since AliExpress meta often has pre-discount price.
+          result.price = Math.min(...variantPrices);
+          strategiesFired.push('aliexpress-variant-min($' + result.price.toFixed(2) + ')');
+        }
+        strategiesFired.push('aliexpress-variants(' + variants.length + ')');
+      } else {
+        // No variants extracted — try our raw price patterns on the HTML
+        const rawPrice = extractAliExpressRawPrice(scrapingBeeHtml);
+        if (rawPrice) {
+          result.price = rawPrice; // OVERRIDES potentially-inflated JSON-LD price
+          strategiesFired.push('aliexpress-raw-price($' + rawPrice.toFixed(2) + ')');
+        } else {
+          // Last resort for AliExpress: URL pdp_npi price (the user-viewed price)
+          const urlHint = tryParseAliExpressUrl(url);
+          if (urlHint && urlHint.price) {
+            result.price = urlHint.price;
+            strategiesFired.push('aliexpress-url-price($' + urlHint.price.toFixed(2) + ')');
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('[Fonce] AliExpress extract failed:', e.message);
+    }
+  }
+
+  // Strategy 3 (FALLBACK): Free CORS proxies — only if ScrapingBee was incomplete
+  // Used as backup since they fail on hostile sites but sometimes work for simple ones.
+  if (!result.title || !result.image || !result.price) {
+    try {
+      const proxyResult = await tryProxiesInParallel(url);
+      result.title = result.title || proxyResult.title;
+      result.image = result.image || proxyResult.image;
+      result.description = result.description || proxyResult.description;
+      result.price = result.price || proxyResult.price;
+      strategiesFired.push('free-proxies');
+    } catch (e) {
+      console.warn('[Fonce] Free proxies failed:', e.message);
+    }
+  }
+
+  // Strategy 4 (LAST RESORT): Microlink for whatever's still missing
   if (!result.title || !result.image || !result.price) {
     try {
       const ml = await tryMicrolink(url);
@@ -4702,12 +5478,12 @@ async function fetchProductData(url) {
     }
   }
 
-  // Strategy 3: site-specific URL hint (AliExpress encodes price in URL params)
+  // Strategy 5: AliExpress URL hint (price from URL params) — last resort
   if (!result.price) {
-    const urlPrice = tryParseAliExpressUrl(url);
-    if (urlPrice) {
-      result.price = urlPrice;
-      strategiesFired.push('aliexpress-url');
+    const urlHint = tryParseAliExpressUrl(url);
+    if (urlHint && urlHint.price) {
+      result.price = urlHint.price;
+      strategiesFired.push('aliexpress-url-fallback');
     }
   }
 
@@ -4874,6 +5650,114 @@ function upgradeToVip(period = 'monthly') {
   save();
 }
 
+function showSourcingGuide() {
+  if (document.getElementById('sourcing-guide-modal')) return;
+  const overlay = $(`
+    <div id="sourcing-guide-modal" class="upgrade-overlay">
+      <div class="upgrade-modal sourcing-guide-modal">
+        <button class="upgrade-close" aria-label="Close">&times;</button>
+
+        <div class="sg-hero">
+          <div class="sg-eyebrow">Source Quality Guide</div>
+          <h2>Where you source from = how customers perceive you</h2>
+          <p class="sg-lead">Every product on Fonce gets a quality tier based on where it ships from. Customers see this as a trust signal on your showcase.</p>
+        </div>
+
+        <div class="sg-tier-section tier-premium">
+          <div class="sg-tier-head">
+            <span class="sg-tier-marker">&#9733;</span>
+            <div>
+              <div class="sg-tier-title">Verified Brand</div>
+              <div class="sg-tier-sub">Ships from US/EU &middot; 2&ndash;5 days &middot; <strong>highest customer trust</strong></div>
+            </div>
+          </div>
+          <p class="sg-tier-desc">US/EU warehouses, real brand names, fast shipping. Customers don't feel like they're buying from China. This is where serious creators source.</p>
+          <div class="sg-source-grid">
+            <a class="sg-source" href="https://www.spocket.co/" target="_blank" rel="noopener">
+              <div class="sg-source-name">Spocket</div>
+              <div class="sg-source-meta">~5,000 indie US/EU brands &middot; from $24/mo</div>
+              <div class="sg-source-cta">Visit Spocket &rarr;</div>
+            </a>
+            <a class="sg-source" href="https://www.printful.com/" target="_blank" rel="noopener">
+              <div class="sg-source-name">Printful</div>
+              <div class="sg-source-meta">Print-on-demand apparel &middot; free</div>
+              <div class="sg-source-cta">Visit Printful &rarr;</div>
+            </a>
+            <a class="sg-source" href="https://printify.com/" target="_blank" rel="noopener">
+              <div class="sg-source-name">Printify</div>
+              <div class="sg-source-meta">POD with 900+ print partners &middot; free</div>
+              <div class="sg-source-cta">Visit Printify &rarr;</div>
+            </a>
+            <a class="sg-source" href="https://modalyst.co/" target="_blank" rel="noopener">
+              <div class="sg-source-name">Modalyst</div>
+              <div class="sg-source-meta">Curated indie + name brands &middot; from $35/mo</div>
+              <div class="sg-source-cta">Visit Modalyst &rarr;</div>
+            </a>
+            <a class="sg-source" href="https://trendsi.com/" target="_blank" rel="noopener">
+              <div class="sg-source-name">Trendsi</div>
+              <div class="sg-source-meta">Fashion &amp; lifestyle, free</div>
+              <div class="sg-source-cta">Visit Trendsi &rarr;</div>
+            </a>
+            <a class="sg-source" href="https://www.faire.com/" target="_blank" rel="noopener">
+              <div class="sg-source-name">Faire</div>
+              <div class="sg-source-meta">Wholesale marketplace, real brands</div>
+              <div class="sg-source-cta">Visit Faire &rarr;</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="sg-tier-section tier-verified">
+          <div class="sg-tier-head">
+            <span class="sg-tier-marker">&#10003;</span>
+            <div>
+              <div class="sg-tier-title">Verified Supplier</div>
+              <div class="sg-tier-sub">Ships in 7&ndash;14 days &middot; mid trust</div>
+            </div>
+          </div>
+          <p class="sg-tier-desc">Vetted dropship suppliers. Better than raw AliExpress. Works if your audience is patient and price-conscious.</p>
+          <div class="sg-source-grid">
+            <a class="sg-source" href="https://cjdropshipping.com/" target="_blank" rel="noopener">
+              <div class="sg-source-name">CJ Dropshipping</div>
+              <div class="sg-source-meta">Massive catalog, some US warehouse stock</div>
+              <div class="sg-source-cta">Visit CJ &rarr;</div>
+            </a>
+            <a class="sg-source" href="https://zendrop.com/" target="_blank" rel="noopener">
+              <div class="sg-source-name">Zendrop</div>
+              <div class="sg-source-meta">Faster shipping than AliExpress, from $49/mo</div>
+              <div class="sg-source-cta">Visit Zendrop &rarr;</div>
+            </a>
+            <a class="sg-source" href="https://dsers.com/" target="_blank" rel="noopener">
+              <div class="sg-source-name">DSers</div>
+              <div class="sg-source-meta">AliExpress with better automation, free tier</div>
+              <div class="sg-source-cta">Visit DSers &rarr;</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="sg-tier-section tier-generic">
+          <div class="sg-tier-head">
+            <span class="sg-tier-marker">&middot;</span>
+            <div>
+              <div class="sg-tier-title">Generic Source</div>
+              <div class="sg-tier-sub">Ships in 15&ndash;30 days &middot; lowest trust</div>
+            </div>
+          </div>
+          <p class="sg-tier-desc">AliExpress, DHgate, Alibaba. Cheap, slow shipping, customers may recognize the source. Use only if you can't find the same product on a higher tier.</p>
+        </div>
+
+        <div class="sg-bottom">
+          <p>Customers see your source tier as a badge on every product. <strong>Verified Brand</strong> products convert better and get fewer complaints. Sourcing well is the single biggest move you can make.</p>
+        </div>
+      </div>
+    </div>
+  `);
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+  const close = () => { overlay.remove(); document.body.style.overflow = ''; };
+  overlay.querySelector('.upgrade-close').onclick = close;
+  overlay.onclick = (e) => { if (e.target === overlay) close(); };
+}
+
 function showUpgradeModal(triggerSource) {
   // Don't double-show
   if (document.getElementById('upgrade-modal')) return;
@@ -4974,10 +5858,10 @@ function showUpgradeModal(triggerSource) {
             <span class="price-amount" id="price-display">$${monthlyPrice}</span>
             <span class="price-period" id="period-display">/month</span>
           </div>
-          <span class="price-note" id="note-display">Cancel anytime &middot; First 7 days free</span>
+          <span class="price-note" id="note-display">Charged today &middot; cancel anytime</span>
         </div>
 
-        <button class="btn btn-primary btn-block upgrade-btn">Upgrade to VIP</button>
+        <button class="btn btn-primary btn-block upgrade-btn">Continue to payment</button>
         <button class="upgrade-later">Maybe later</button>
       </div>
     </div>
@@ -5007,21 +5891,176 @@ function showUpgradeModal(triggerSource) {
       if (selectedPeriod === 'annual') {
         priceEl.textContent = '$' + annualPrice;
         periodEl.textContent = '/year';
-        noteEl.innerHTML = `$${monthlyEquivAnnual}/month effective &middot; First 7 days free`;
+        noteEl.innerHTML = `$${monthlyEquivAnnual}/month effective &middot; charged $${annualPrice} today`;
       } else {
         priceEl.textContent = '$' + monthlyPrice;
         periodEl.textContent = '/month';
-        noteEl.innerHTML = `Cancel anytime &middot; First 7 days free`;
+        noteEl.innerHTML = `Charged $${monthlyPrice} today &middot; cancel anytime`;
       }
     };
   });
 
   overlay.querySelector('.upgrade-btn').onclick = () => {
-    upgradeToVip(selectedPeriod);
     close();
-    showVipWelcome();
-    render();
+    showVipPayment(selectedPeriod);
   };
+}
+
+// ============================================================
+// VIP PAYMENT STEP — REQUIRED before VIP is granted.
+// Real card details must be entered. In production, hook up Stripe.
+// ============================================================
+function showVipPayment(period) {
+  if (document.getElementById('vip-payment-modal')) return;
+  const monthlyPrice = 5.99;
+  const annualPrice = 59;
+  const amount = period === 'annual' ? annualPrice : monthlyPrice;
+  const periodLabel = period === 'annual' ? 'year' : 'month';
+
+  const overlay = $(`
+    <div id="vip-payment-modal" class="upgrade-overlay">
+      <div class="upgrade-modal vip-payment-modal">
+        <button class="upgrade-close" aria-label="Close">&times;</button>
+
+        <div class="pay-eyebrow">Payment</div>
+        <h2 class="pay-title">Fonce VIP &mdash; $${amount.toFixed(2)}/${periodLabel}</h2>
+        <div class="pay-sub">Charged today. Billed every ${periodLabel}. Cancel anytime from your dashboard.</div>
+
+        <form class="pay-form" id="pay-form" autocomplete="on">
+          <div class="pay-field">
+            <label>Cardholder name</label>
+            <input type="text" id="pay-name" placeholder="Full name on card" autocomplete="cc-name" required />
+          </div>
+          <div class="pay-field">
+            <label>Card number</label>
+            <input type="text" id="pay-card" placeholder="1234 1234 1234 1234" inputmode="numeric" autocomplete="cc-number" required maxlength="23" />
+          </div>
+          <div class="pay-field-row">
+            <div class="pay-field">
+              <label>Expiry</label>
+              <input type="text" id="pay-exp" placeholder="MM / YY" inputmode="numeric" autocomplete="cc-exp" required maxlength="7" />
+            </div>
+            <div class="pay-field">
+              <label>CVC</label>
+              <input type="text" id="pay-cvc" placeholder="123" inputmode="numeric" autocomplete="cc-csc" required maxlength="4" />
+            </div>
+            <div class="pay-field">
+              <label>ZIP</label>
+              <input type="text" id="pay-zip" placeholder="33139" inputmode="numeric" autocomplete="postal-code" required maxlength="10" />
+            </div>
+          </div>
+          <div class="pay-error" id="pay-error"></div>
+          <button type="submit" class="btn btn-primary btn-block pay-submit" id="pay-submit">Pay $${amount.toFixed(2)}</button>
+        </form>
+
+        <div class="pay-legal">
+          By completing this purchase you authorize Fonce to charge your card $${amount.toFixed(2)} ${period === 'annual' ? 'annually' : 'monthly'} until you cancel. Powered by Stripe.
+        </div>
+        <div class="pay-prototype-note">
+          <strong>Prototype note:</strong> this form does not currently process real charges. Wire it up to a Stripe Payment Intent or Payment Link before launch.
+        </div>
+      </div>
+    </div>
+  `);
+  document.body.appendChild(overlay);
+  document.body.style.overflow = 'hidden';
+
+  const close = () => { overlay.remove(); document.body.style.overflow = ''; };
+  overlay.querySelector('.upgrade-close').onclick = close;
+  overlay.onclick = (e) => { if (e.target === overlay) close(); };
+
+  // Auto-format card number with spaces, expiry with slash
+  const cardEl = overlay.querySelector('#pay-card');
+  cardEl.addEventListener('input', () => {
+    let v = cardEl.value.replace(/\D/g, '').slice(0, 19);
+    cardEl.value = v.replace(/(\d{4})/g, '$1 ').trim();
+  });
+  const expEl = overlay.querySelector('#pay-exp');
+  expEl.addEventListener('input', () => {
+    let v = expEl.value.replace(/\D/g, '').slice(0, 4);
+    if (v.length >= 3) v = v.slice(0, 2) + ' / ' + v.slice(2);
+    expEl.value = v;
+  });
+  const cvcEl = overlay.querySelector('#pay-cvc');
+  cvcEl.addEventListener('input', () => { cvcEl.value = cvcEl.value.replace(/\D/g, '').slice(0, 4); });
+  const zipEl = overlay.querySelector('#pay-zip');
+  zipEl.addEventListener('input', () => { zipEl.value = zipEl.value.replace(/[^A-Za-z0-9\s-]/g, '').slice(0, 10); });
+
+  overlay.querySelector('#pay-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = overlay.querySelector('#pay-name').value.trim();
+    const cardDigits = cardEl.value.replace(/\D/g, '');
+    const expRaw = expEl.value.replace(/\D/g, '');
+    const cvc = cvcEl.value.trim();
+    const zip = zipEl.value.trim();
+    const errEl = overlay.querySelector('#pay-error');
+
+    // Validation — real checks, not free-passes
+    if (!name || name.length < 2 || !/\s/.test(name)) {
+      errEl.textContent = 'Enter the full name on your card.';
+      return;
+    }
+    if (cardDigits.length < 13 || cardDigits.length > 19) {
+      errEl.textContent = 'Card number looks incomplete.';
+      return;
+    }
+    if (!luhnCheck(cardDigits)) {
+      errEl.textContent = 'Card number is invalid. Check the digits.';
+      return;
+    }
+    if (expRaw.length !== 4) {
+      errEl.textContent = 'Enter expiry as MM / YY.';
+      return;
+    }
+    const expMonth = parseInt(expRaw.slice(0, 2), 10);
+    const expYear = 2000 + parseInt(expRaw.slice(2, 4), 10);
+    if (expMonth < 1 || expMonth > 12) {
+      errEl.textContent = 'Expiry month is invalid.';
+      return;
+    }
+    const now = new Date();
+    const expDate = new Date(expYear, expMonth, 0); // last day of expiry month
+    if (expDate < now) {
+      errEl.textContent = 'Card is expired.';
+      return;
+    }
+    if (cvc.length < 3 || cvc.length > 4) {
+      errEl.textContent = 'CVC must be 3 or 4 digits.';
+      return;
+    }
+    if (zip.length < 3) {
+      errEl.textContent = 'ZIP / postal code required.';
+      return;
+    }
+
+    errEl.textContent = '';
+    const submitBtn = overlay.querySelector('#pay-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Processing...';
+
+    // Simulate Stripe processing (real implementation would call Stripe here)
+    setTimeout(() => {
+      // ONLY grant VIP after successful "payment"
+      upgradeToVip(period);
+      close();
+      showVipWelcome();
+      render();
+    }, 1600);
+  });
+}
+
+// Luhn algorithm — validates that a card number is mathematically real.
+function luhnCheck(num) {
+  if (!num || !/^\d+$/.test(num)) return false;
+  let sum = 0;
+  let alt = false;
+  for (let i = num.length - 1; i >= 0; i--) {
+    let d = parseInt(num.charAt(i), 10);
+    if (alt) { d *= 2; if (d > 9) d -= 9; }
+    sum += d;
+    alt = !alt;
+  }
+  return sum % 10 === 0;
 }
 
 function showVipWelcome() {
@@ -5071,8 +6110,71 @@ function logout() {
   navigate('landing');
 }
 
-function addProduct({ title, image, sourceUrl, sourcePrice, markup, description }) {
+// ============================================================
+// SOURCE QUALITY TIER SYSTEM
+// Auto-detect the source's trust tier from the URL domain.
+// Each tier signals shipping speed, brand quality, and trust to buyers.
+// ============================================================
+const SOURCE_TIERS = {
+  premium: {
+    key: 'premium',
+    label: 'Verified Brand',
+    badge: 'Ships from US/EU · 2–5 days',
+    shortBadge: '🇺🇸 2–5 day shipping',
+    description: 'US/EU warehouse. Real brand names. Fast shipping, vetted quality.',
+    color: '#a78bfa',
+    domains: [
+      'spocket.co', 'spocket.com',
+      'printful.com', 'printify.com',
+      'modalyst.co', 'modalyst.com',
+      'syncee.com', 'syncee.co',
+      'faire.com',
+      'trendsi.com'
+    ]
+  },
+  verified: {
+    key: 'verified',
+    label: 'Verified Supplier',
+    badge: 'Ships in 7–14 days',
+    shortBadge: '7–14 day shipping',
+    description: 'Vetted dropship supplier. Decent quality, mid shipping times.',
+    color: '#d4af37',
+    domains: [
+      'cjdropshipping.com', 'cjdropshipping.cn',
+      'zendrop.com',
+      'dsers.com'
+    ]
+  },
+  generic: {
+    key: 'generic',
+    label: 'Generic Source',
+    badge: 'Ships in 15–30 days',
+    shortBadge: '15–30 day shipping',
+    description: 'Generic supplier. Lowest cost, slower shipping. Customers may notice the source.',
+    color: '#8a8170',
+    domains: [
+      'aliexpress.com', 'aliexpress.us',
+      'alibaba.com', '1688.com',
+      'dhgate.com', 'banggood.com',
+      'shein.com', 'temu.com'
+    ]
+  }
+};
+
+function detectSourceTier(url) {
+  if (!url) return SOURCE_TIERS.generic;
+  let host = '';
+  try { host = new URL(url).hostname.toLowerCase().replace(/^www\./, ''); } catch (e) { return SOURCE_TIERS.generic; }
+  for (const tier of [SOURCE_TIERS.premium, SOURCE_TIERS.verified, SOURCE_TIERS.generic]) {
+    if (tier.domains.some(d => host.endsWith(d))) return tier;
+  }
+  // Unknown domain — treat as generic but flag as such
+  return { ...SOURCE_TIERS.generic, label: 'Unknown Source', shortBadge: 'Shipping varies' };
+}
+
+function addProduct({ title, image, sourceUrl, sourcePrice, markup, description, variantSku, variantLabel }) {
   const user = state.users[state.currentUser];
+  const tier = detectSourceTier(sourceUrl);
   const product = {
     id: 'p_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
     title, image, sourceUrl,
@@ -5080,6 +6182,9 @@ function addProduct({ title, image, sourceUrl, sourcePrice, markup, description 
     markup: +markup,
     description: description || '',
     listedPrice: +(+sourcePrice + +markup).toFixed(2),
+    variantSku: variantSku || null,
+    variantLabel: variantLabel || null,
+    sourceTier: tier.key,
     paused: false,
     pausedReason: null,
     detectedNewPrice: null,
@@ -5143,6 +6248,14 @@ function trackBuyClick(productId) {
 function removeProduct(productId) {
   const user = state.users[state.currentUser];
   user.products = user.products.filter(p => p.id !== productId);
+  save();
+}
+
+function setProductArchived(productId, archived) {
+  const user = state.users[state.currentUser];
+  const p = user && user.products.find(x => x.id === productId);
+  if (!p) return;
+  p.archived = !!archived;
   save();
 }
 
@@ -5563,6 +6676,24 @@ function toast(msg) {
   document.body.appendChild(el);
   setTimeout(() => el.remove(), 2400);
 }
+function toastWithUndo(msg, onUndo, durationMs = 5000) {
+  // Remove any existing toast-undo first
+  document.querySelectorAll('.toast-undo').forEach(t => t.remove());
+  const el = $(`
+    <div class="toast toast-undo">
+      <span class="toast-msg">${escapeHtml(msg)}</span>
+      <button class="toast-undo-btn">Undo</button>
+    </div>
+  `);
+  document.body.appendChild(el);
+  const dismiss = () => el.remove();
+  const timeout = setTimeout(dismiss, durationMs);
+  el.querySelector('.toast-undo-btn').onclick = () => {
+    clearTimeout(timeout);
+    dismiss();
+    onUndo();
+  };
+}
 function fallbackImg(seed) {
   const colors = ['#161616','#1f1f1f','#0f0f0f','#1a1a1a'];
   const c = colors[(seed || '').length % colors.length];
@@ -5630,6 +6761,12 @@ function toggleDrawer(open) {
 
 function render() {
   renderNav();
+
+  // If a Chrome-extension import was pending and we now have a user, jump to Add Product
+  if (window.__fonceImportPending && state.currentUser && state.view !== 'addProduct') {
+    window.__fonceImportPending = false;
+    state.view = 'addProduct';
+  }
 
   // Apply influencer's theme on public-facing views; reset everywhere else.
   if ((state.view === 'showcase' || state.view === 'productDetail') && state.showcaseUser) {
@@ -6204,11 +7341,28 @@ function viewDashboard() {
           </div>
         ` : '';
         return `
-        <div class="product-card-mini ${p.paused ? 'paused' : ''}" data-product-id="${p.id}">
-          <div class="img" style="background-image:url('${escapeHtml(p.image || fallbackImg(p.id))}')"></div>
+        <div class="product-card-mini ${p.paused ? 'paused' : ''} ${p.archived ? 'archived' : ''}" data-product-id="${p.id}">
+          <div class="img" style="background-image:url('${escapeHtml(p.image || fallbackImg(p.id))}')">
+            ${p.archived ? `<div class="archive-lock-overlay" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>` : (p.paused ? `<div class="refresh-needed-overlay" aria-hidden="true">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 4 23 10 17 10"/>
+                <polyline points="1 20 1 14 7 14"/>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+              </svg>
+            </div>` : '')}
+          </div>
           <div class="info">
-            ${p.paused ? '<span class="paused-badge">Paused</span>' : ''}
+            ${p.archived ? '<span class="paused-badge archived-badge">Archived</span>' : (p.paused ? '<span class="paused-badge">Needs refresh</span>' : '')}
             <h4>${escapeHtml(p.title)}</h4>
+            ${(() => {
+              const tier = p.sourceTier ? (SOURCE_TIERS[p.sourceTier] || detectSourceTier(p.sourceUrl)) : detectSourceTier(p.sourceUrl);
+              return `<span class="source-tier-chip tier-${tier.key}" title="${escapeHtml(tier.description)}">${tier.key === 'premium' ? '★' : (tier.key === 'verified' ? '✓' : '·')} ${escapeHtml(tier.label)} &middot; ${escapeHtml(tier.shortBadge)}</span>`;
+            })()}
             <div class="pricing">
               <span>cost $${p.sourcePrice}</span>
               <span class="listed">listed $${p.listedPrice}</span>
@@ -6228,7 +7382,10 @@ function viewDashboard() {
             </div>
             ${priceChange}
             <div class="actions">
-              ${p.paused ? `<button class="btn refresh-btn" data-product-id="${p.id}">Refresh &amp; republish</button>` : ''}
+              ${p.paused && !p.archived ? `<button class="btn refresh-btn" data-product-id="${p.id}">Refresh &amp; republish</button>` : ''}
+              ${p.archived
+                ? `<button class="btn archive-btn" data-product-id="${p.id}" data-action="unarchive">Unarchive</button>`
+                : `<button class="btn archive-btn" data-product-id="${p.id}" data-action="archive">Archive</button>`}
               <button class="btn btn-danger remove-btn" data-product-id="${p.id}">Remove</button>
             </div>
           </div>
@@ -6966,18 +8123,43 @@ function viewDashboard() {
       card.onclick = () => showUpgradeModal('insights');
     });
 
-    // Remove product handlers — attach after render
+    // Remove product handlers — instant removal with Undo
     el.querySelectorAll('.remove-btn').forEach(btn => {
       btn.onclick = (e) => {
         e.preventDefault();
         e.stopPropagation();
         const productId = btn.dataset.productId;
-        console.log('[Fonce] Remove clicked for product:', productId);
-        if (confirm('Remove this product? This cannot be undone.')) {
-          removeProduct(productId);
-          toast('Product removed.');
-          render();
-        }
+        const user = state.users[state.currentUser];
+        const productIndex = user.products.findIndex(p => p.id === productId);
+        if (productIndex === -1) return;
+        // Save snapshot for undo
+        const removedProduct = user.products[productIndex];
+        const removedIndex = productIndex;
+        removeProduct(productId);
+        toastWithUndo('Product removed.', () => {
+          // Restore at original position
+          const u = state.users[state.currentUser];
+          if (u && !u.products.some(p => p.id === removedProduct.id)) {
+            u.products.splice(removedIndex, 0, removedProduct);
+            save();
+            render();
+            toast('Restored.');
+          }
+        });
+        render();
+      };
+    });
+
+    // Archive / Unarchive handlers
+    el.querySelectorAll('.archive-btn').forEach(btn => {
+      btn.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const productId = btn.dataset.productId;
+        const action = btn.dataset.action;
+        setProductArchived(productId, action === 'archive');
+        toast(action === 'archive' ? 'Product archived. Hidden from your showcase.' : 'Product unarchived. Now live on your showcase.');
+        render();
       };
     });
 
@@ -7070,8 +8252,16 @@ function viewAddProduct() {
           <input id="ap-source" placeholder="https://example.com/..." />
           <button class="btn" type="button" id="ap-fetch">Fetch</button>
         </div>
-        <div class="hint">We'll try to auto-fill the title, image, and description.</div>
+        <div class="hint">We'll try to auto-fill the title, image, and description. <a href="#" id="ap-sources-guide" style="color:var(--accent);text-decoration:underline;text-underline-offset:2px;">Where should I source from? &rarr;</a></div>
+        <div class="source-tier-preview" id="ap-tier-preview" style="display:none;"></div>
         <div class="fetch-status" id="ap-status"></div>
+        <div class="variant-picker" id="ap-variants" style="display:none;">
+          <div class="variant-picker-header">
+            <span class="variant-picker-title">Choose the variant you're selling</span>
+            <span class="variant-picker-sub" id="ap-variants-count"></span>
+          </div>
+          <div class="variant-picker-list" id="ap-variants-list"></div>
+        </div>
       </div>
 
       <div class="field">
@@ -7080,16 +8270,23 @@ function viewAddProduct() {
       </div>
 
       <div class="field">
-        <label>Image URL <span style="color:var(--fg-dim);text-transform:none;letter-spacing:0">(editable)</span></label>
-        <input id="ap-image" placeholder="https://..." />
+        <label>Product image</label>
+        <div class="image-input-row">
+          <input id="ap-image" placeholder="https://..." />
+          <input type="file" id="ap-image-file" accept="image/jpeg,image/png,image/webp,image/gif" style="display:none;" />
+          <button type="button" class="upload-btn-inline" id="ap-upload-btn" title="Upload from device">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span>Upload</span>
+          </button>
+        </div>
+        <div class="hint">Auto-filled from your source link. Paste a different URL or upload your own to override. <span style="color:var(--fg-dim)">Max 2 MB.</span></div>
         <div class="img-preview" id="ap-img-preview"></div>
-        <div class="hint">Auto-filled from the source. Replace with your own URL to use a custom image.</div>
       </div>
 
       <div class="field-row">
         <div class="field">
           <label>Source price (USD)</label>
-          <input id="ap-cost" type="number" step="0.01" placeholder="0.00" />
+          <input id="ap-cost" type="number" step="0.01" placeholder="Auto-fills when you fetch a URL" readonly />
           <div id="ap-cost-badge"></div>
         </div>
         <div class="field">
@@ -7126,6 +8323,70 @@ function viewAddProduct() {
     el.querySelector('#ap-cost').oninput = updatePreview;
     el.querySelector('#ap-markup').oninput = updatePreview;
 
+    // ------------------------------------------------------------
+    // EXTENSION IMPORT — if the Chrome extension sent us data, prefill
+    // ------------------------------------------------------------
+    const imp = window.__fonceImport;
+    if (imp) {
+      window.__fonceImport = null; // consume once
+      if (imp.source) el.querySelector('#ap-source').value = imp.source;
+      if (imp.title) el.querySelector('#ap-title').value = imp.title.slice(0, 140);
+      if (imp.description) el.querySelector('#ap-desc').value = imp.description.slice(0, 240);
+      if (imp.image) {
+        el.querySelector('#ap-image').value = imp.image;
+      }
+      const costEl = el.querySelector('#ap-cost');
+      const costBadge = el.querySelector('#ap-cost-badge');
+      if (imp.price && imp.price > 0) {
+        costEl.value = imp.price.toFixed(2);
+        costEl.setAttribute('readonly', 'readonly');
+        costBadge.innerHTML = '<span class="imported-badge">Locked &middot; Imported from extension</span>';
+      }
+      // Render variants from extension if any
+      if (imp.variants && imp.variants.length > 0) {
+        const variantsPanel = el.querySelector('#ap-variants');
+        const variantsList = el.querySelector('#ap-variants-list');
+        const variantsCount = el.querySelector('#ap-variants-count');
+        if (variantsPanel && variantsList && variantsCount) {
+          variantsPanel.style.display = 'block';
+          variantsCount.textContent = imp.variants.length + ' variant' + (imp.variants.length === 1 ? '' : 's') + ' — pick which one you\'re selling';
+          variantsList.innerHTML = imp.variants.map((v) => `
+            <button type="button" class="variant-chip" data-sku="${(v.sku || '').toString().replace(/[<>"']/g, '')}" data-label="${(v.label || '').toString().replace(/[<>"']/g, '')}" data-price="${v.price || ''}">
+              <span class="variant-chip-label">${(v.label || 'Variant').toString().replace(/[<>"&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]))}</span>
+              ${v.price ? `<span class="variant-chip-price">$${(+v.price).toFixed(2)}</span>` : ''}
+            </button>
+          `).join('');
+          variantsList.querySelectorAll('.variant-chip').forEach(chip => {
+            chip.onclick = () => {
+              variantsList.querySelectorAll('.variant-chip').forEach(c => c.classList.remove('active'));
+              chip.classList.add('active');
+              const titleInput = el.querySelector('#ap-title');
+              const baseTitle = titleInput.value.split(' — ')[0];
+              titleInput.value = baseTitle + ' — ' + chip.dataset.label;
+              const vp = parseFloat(chip.dataset.price);
+              if (vp && vp > 0) {
+                const c = el.querySelector('#ap-cost');
+                c.removeAttribute('readonly');
+                c.value = vp.toFixed(2);
+                c.setAttribute('readonly', 'readonly');
+                updatePreview();
+              }
+              el.dataset.selectedSku = chip.dataset.sku;
+              el.dataset.selectedVariantLabel = chip.dataset.label;
+            };
+          });
+        }
+      }
+      // Update previews
+      updatePreview();
+      setTimeout(() => {
+        if (imgInput.value) updateImagePreview();
+        // Focus markup field — the only thing left to fill
+        el.querySelector('#ap-markup').focus();
+        toast('Imported from extension. Set your markup and add to showcase.');
+      }, 30);
+    }
+
     const imgInput = el.querySelector('#ap-image');
     const imgPreview = el.querySelector('#ap-img-preview');
     const updateImagePreview = () => {
@@ -7139,6 +8400,37 @@ function viewAddProduct() {
       }
     };
     imgInput.oninput = updateImagePreview;
+
+    // File upload handler (inline button next to URL field)
+    const fileInput = el.querySelector('#ap-image-file');
+    const uploadBtn = el.querySelector('#ap-upload-btn');
+    uploadBtn.onclick = () => fileInput.click();
+    fileInput.onchange = (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const MAX_SIZE = 2 * 1024 * 1024; // 2 MB
+      if (file.size > MAX_SIZE) {
+        toast('Image too large. Please use a file under 2 MB.');
+        fileInput.value = '';
+        return;
+      }
+      if (!file.type.startsWith('image/')) {
+        toast('Please choose an image file.');
+        fileInput.value = '';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        const dataUrl = ev.target.result;
+        imgInput.value = dataUrl;
+        updateImagePreview();
+        toast('Image uploaded.');
+      };
+      reader.onerror = () => {
+        toast('Could not read the image file.');
+      };
+      reader.readAsDataURL(file);
+    };
 
     const fetchBtn = el.querySelector('#ap-fetch');
     const status = el.querySelector('#ap-status');
@@ -7164,10 +8456,9 @@ function viewAddProduct() {
       fetchBtn.disabled = true;
       fetchBtn.textContent = 'Fetching...';
 
-      // Reset price field state — unlock during fetch
+      // Clear the previous import badge (price stays locked)
       const costInput = el.querySelector('#ap-cost');
       const costBadge = el.querySelector('#ap-cost-badge');
-      costInput.removeAttribute('readonly');
       costBadge.innerHTML = '';
 
       let result = null;
@@ -7182,6 +8473,11 @@ function viewAddProduct() {
 
       if (!result || (!result.title && !result.image && !result.price)) {
         status.className = 'fetch-status error';
+        // Unlock price field for full manual entry path
+        costInput.removeAttribute('readonly');
+        costInput.classList.add('manual-entry');
+        costInput.placeholder = 'Enter source price (one-time)';
+        costBadge.innerHTML = '<span class="imported-badge warn">⚠ Auto-fetch failed &middot; type the price manually</span>';
         if (isAliExpressUrl(url)) {
           status.innerHTML = `
             <div class="aliex-helper">
@@ -7214,15 +8510,64 @@ function viewAddProduct() {
         el.querySelector('#ap-desc').value = result.description.slice(0, 240);
         filled.push('description');
       }
-      if (result.price && !el.querySelector('#ap-cost').value) {
-        el.querySelector('#ap-cost').value = result.price.toFixed(2);
-        el.querySelector('#ap-cost').setAttribute('readonly', 'readonly');
-        el.querySelector('#ap-cost-badge').innerHTML = '<span class="imported-badge">Imported from source</span>';
+      if (result.price && !costInput.value) {
+        costInput.value = result.price.toFixed(2);
+        costInput.setAttribute('readonly', 'readonly');
+        costInput.classList.remove('manual-entry');
+        costBadge.innerHTML = '<span class="imported-badge">Locked &middot; Source price from link</span>';
         updatePreview();
         filled.push('price');
+      } else if (!result.price) {
+        // Auto-fetch didn't return a price. Unlock the field so creator can enter
+        // it manually ONCE during creation. Will lock permanently after the product is saved.
+        costInput.removeAttribute('readonly');
+        costInput.classList.add('manual-entry');
+        costInput.placeholder = 'Enter source price (one-time)';
+        costBadge.innerHTML = '<span class="imported-badge warn">⚠ Price not detected &middot; <a href="#" id="cost-help-link">type the price you see on the source page</a></span>';
+        const helpLink = el.querySelector('#cost-help-link');
+        if (helpLink) {
+          helpLink.onclick = (ev) => { ev.preventDefault(); costInput.focus(); };
+        }
       }
 
       console.log('[Fonce] Auto-filled:', filled);
+
+      // Render variants if AliExpress returned them
+      const variantsPanel = el.querySelector('#ap-variants');
+      const variantsList = el.querySelector('#ap-variants-list');
+      const variantsCount = el.querySelector('#ap-variants-count');
+      if (result.variants && result.variants.length > 0) {
+        variantsPanel.style.display = 'block';
+        variantsCount.textContent = result.variants.length + ' variant' + (result.variants.length === 1 ? '' : 's') + ' — pick which one you\'re selling';
+        variantsList.innerHTML = result.variants.map((v, i) => `
+          <button type="button" class="variant-chip" data-sku="${escapeHtml(v.sku)}" data-label="${escapeHtml(v.label)}" data-price="${v.price || ''}">
+            <span class="variant-chip-label">${escapeHtml(v.label)}</span>
+            ${v.price ? `<span class="variant-chip-price">$${v.price.toFixed(2)}</span>` : ''}
+          </button>
+        `).join('');
+        variantsList.querySelectorAll('.variant-chip').forEach(chip => {
+          chip.onclick = () => {
+            variantsList.querySelectorAll('.variant-chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            // Append variant label to the title
+            const titleInput = el.querySelector('#ap-title');
+            const baseTitle = titleInput.value.split(' — ')[0]; // strip prior variant
+            titleInput.value = baseTitle + ' — ' + chip.dataset.label;
+            // Update price to this variant's price (programmatic write works on readonly inputs)
+            const variantPrice = parseFloat(chip.dataset.price);
+            if (variantPrice && variantPrice > 0) {
+              el.querySelector('#ap-cost').value = variantPrice.toFixed(2);
+              updatePreview();
+            }
+            // Store SKU in a hidden attribute on the form
+            el.dataset.selectedSku = chip.dataset.sku;
+            el.dataset.selectedVariantLabel = chip.dataset.label;
+          };
+        });
+      } else {
+        variantsPanel.style.display = 'none';
+      }
+
       if (filled.length === 0) {
         status.className = 'fetch-status';
         status.textContent = 'Page found but fields already filled. Clear them to refetch.';
@@ -7248,13 +8593,46 @@ function viewAddProduct() {
         doFetch();
       }
     });
+
+    // Live source tier badge — show as soon as a URL is pasted
+    const tierPreview = el.querySelector('#ap-tier-preview');
+    const updateTierBadge = () => {
+      const url = sourceInput.value.trim();
+      if (!url || !/^https?:\/\//i.test(url)) {
+        tierPreview.style.display = 'none';
+        return;
+      }
+      const tier = detectSourceTier(url);
+      tierPreview.style.display = 'flex';
+      tierPreview.className = 'source-tier-preview tier-' + tier.key;
+      tierPreview.innerHTML = `
+        <div class="tier-icon">${tier.key === 'premium' ? '★' : (tier.key === 'verified' ? '✓' : '·')}</div>
+        <div class="tier-text">
+          <div class="tier-label">${tier.label}</div>
+          <div class="tier-sub">${tier.badge}</div>
+        </div>
+        ${tier.key !== 'premium' ? `<a href="#" class="tier-upgrade-link" id="tier-upgrade-${Date.now()}">Upgrade your source &rarr;</a>` : ''}
+      `;
+      // Wire the upgrade link to show sourcing guide
+      const upgradeLink = tierPreview.querySelector('.tier-upgrade-link');
+      if (upgradeLink) upgradeLink.onclick = (e) => { e.preventDefault(); showSourcingGuide(); };
+    };
     sourceInput.addEventListener('input', () => {
+      updateTierBadge();
       const url = sourceInput.value.trim();
       if (isAliExpressUrl(url) && !status.classList.contains('success')) {
         status.className = 'fetch-status notice';
         status.innerHTML = `<strong>Heads up:</strong> AliExpress blocks most auto-fill tools. Try Fetch &mdash; if it fails, you'll get a 4-step quick-paste guide.`;
       }
     });
+    // Run once in case the URL is pre-filled (e.g. from extension import)
+    setTimeout(updateTierBadge, 50);
+
+    // "Where should I source from?" guide
+    el.querySelector('#ap-sources-guide').onclick = (e) => {
+      e.preventDefault();
+      showSourcingGuide();
+    };
 
     el.querySelector('#ap-go').onclick = () => {
       const title = el.querySelector('#ap-title').value.trim();
@@ -7263,11 +8641,23 @@ function viewAddProduct() {
       const sourcePrice = el.querySelector('#ap-cost').value;
       const markup = el.querySelector('#ap-markup').value;
       const description = el.querySelector('#ap-desc').value.trim();
-      if (!title || !sourcePrice || !markup) {
-        el.querySelector('#err').innerHTML = `<div class="error">Title, source price, and markup are required.</div>`;
+      if (!sourceUrl || !/^https?:\/\//i.test(sourceUrl)) {
+        el.querySelector('#err').innerHTML = `<div class="error">Source URL is required. Paste a product link and click <strong>Fetch</strong>.</div>`;
         return;
       }
-      addProduct({ title, image, sourceUrl, sourcePrice, markup, description });
+      if (!sourcePrice || +sourcePrice <= 0) {
+        el.querySelector('#err').innerHTML = `<div class="error">Source price is required. Click <strong>Fetch</strong> — if auto-fill doesn't catch it, type the price you see on the source page.</div>`;
+        return;
+      }
+      if (!title) {
+        el.querySelector('#err').innerHTML = `<div class="error">Title is required.</div>`;
+        return;
+      }
+      if (!markup || +markup < 0) {
+        el.querySelector('#err').innerHTML = `<div class="error">Set your markup.</div>`;
+        return;
+      }
+      addProduct({ title, image, sourceUrl, sourcePrice, markup, description, variantSku: el.dataset.selectedSku, variantLabel: el.dataset.selectedVariantLabel });
       toast('Product added.');
       navigate('dashboard');
     };
@@ -7284,7 +8674,7 @@ function viewShowcase() {
   }
   trackShowcaseVisit();
   const initial = user.username.charAt(0).toUpperCase();
-  const visibleProducts = user.products.filter(p => !p.paused);
+  const visibleProducts = user.products.filter(p => !p.paused && !p.archived);
   let body = '';
 
   // Decide what to render in the price slot based on user preference
@@ -7294,13 +8684,16 @@ function viewShowcase() {
       return `<button class="shop-now-btn" onclick="event.stopPropagation();navigate('productDetail',{showcaseUser:'${user.username}',selectedProduct:'${p.id}'})">Shop now</button>`;
     }
     if (priceDisplay === 'cart') {
-      return `<button class="showcase-cart-btn" onclick="event.stopPropagation();navigate('productDetail',{showcaseUser:'${user.username}',selectedProduct:'${p.id}'})" aria-label="Shop ${escapeHtml(p.title)}">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M2 3 H5 L7 16 H19 L21 8 H6"/>
-          <circle cx="9" cy="20" r="1.4"/>
-          <circle cx="17" cy="20" r="1.4"/>
-        </svg>
-      </button>`;
+      return `<div class="showcase-price-cart-row">
+        <div class="price">$${p.listedPrice.toFixed(2)}</div>
+        <button class="showcase-cart-btn" onclick="event.stopPropagation();navigate('productDetail',{showcaseUser:'${user.username}',selectedProduct:'${p.id}'})" aria-label="Shop ${escapeHtml(p.title)}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2 3 H5 L7 16 H19 L21 8 H6"/>
+            <circle cx="9" cy="20" r="1.4"/>
+            <circle cx="17" cy="20" r="1.4"/>
+          </svg>
+        </button>
+      </div>`;
     }
     return `<div class="price">$${p.listedPrice.toFixed(2)}</div>`;
   };
@@ -7662,14 +9055,42 @@ function showProductManage(productId) {
         <button class="upgrade-close" aria-label="Close">&times;</button>
 
         <div class="manage-product-head">
-          <div class="manage-product-img" style="background-image:url('${escapeHtml(product.image || '').slice(0,500)}')"></div>
+          <div class="manage-product-img" id="manage-prod-img" style="background-image:url('${escapeHtml(product.image || '').slice(0,500)}')"></div>
           <div class="manage-product-info">
-            <h2>${escapeHtml(product.title)}</h2>
+            <h2 id="manage-prod-title">${escapeHtml(product.title)}</h2>
             <div class="pricing">
               <span>cost $${product.sourcePrice}</span>
               <span class="listed">listed $${product.listedPrice}</span>
             </div>
             ${product.paused ? '<span class="paused-badge">Paused</span>' : ''}
+            <button class="manage-edit-toggle" id="manage-edit-toggle">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              Edit title &amp; image
+            </button>
+          </div>
+        </div>
+
+        <div class="manage-edit-panel" id="manage-edit-panel" style="display:none;">
+          <div class="manage-section-title">Edit product</div>
+          <div class="field">
+            <label>Title</label>
+            <input id="manage-edit-title" type="text" value="${escapeHtml(product.title)}" />
+          </div>
+          <div class="field">
+            <label>Image</label>
+            <div class="image-input-row">
+              <input id="manage-edit-image" type="text" value="${escapeHtml(product.image || '')}" placeholder="https://..." />
+              <input type="file" id="manage-edit-image-file" accept="image/jpeg,image/png,image/webp,image/gif" style="display:none;" />
+              <button type="button" class="upload-btn-inline" id="manage-edit-upload-btn" title="Upload from device">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span>Upload</span>
+              </button>
+            </div>
+            <div class="hint">Paste an image URL or upload your own. <span style="color:var(--fg-dim)">Max 2 MB.</span></div>
+          </div>
+          <div class="manage-edit-actions">
+            <button class="btn btn-primary btn-sm" id="manage-save-btn">Save changes</button>
+            <button class="btn btn-sm btn-ghost" id="manage-cancel-edit">Cancel</button>
           </div>
         </div>
 
@@ -7689,6 +9110,77 @@ function showProductManage(productId) {
   };
   overlay.querySelector('.upgrade-close').onclick = close;
   overlay.onclick = (e) => { if (e.target === overlay) close(); };
+
+  // ---- Edit title & image handlers ----
+  const editToggle = overlay.querySelector('#manage-edit-toggle');
+  const editPanel = overlay.querySelector('#manage-edit-panel');
+  const editTitleInput = overlay.querySelector('#manage-edit-title');
+  const editImageInput = overlay.querySelector('#manage-edit-image');
+  const editImageFile = overlay.querySelector('#manage-edit-image-file');
+  const editUploadBtn = overlay.querySelector('#manage-edit-upload-btn');
+  const saveBtn = overlay.querySelector('#manage-save-btn');
+  const cancelBtn = overlay.querySelector('#manage-cancel-edit');
+  const headTitle = overlay.querySelector('#manage-prod-title');
+  const headImg = overlay.querySelector('#manage-prod-img');
+
+  editToggle.onclick = () => {
+    const isOpen = editPanel.style.display !== 'none';
+    editPanel.style.display = isOpen ? 'none' : 'block';
+    editToggle.classList.toggle('active', !isOpen);
+    if (!isOpen) editTitleInput.focus();
+  };
+
+  editUploadBtn.onclick = () => editImageFile.click();
+  editImageFile.onchange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const MAX_SIZE = 2 * 1024 * 1024;
+    if (file.size > MAX_SIZE) {
+      toast('Image too large. Please use a file under 2 MB.');
+      editImageFile.value = '';
+      return;
+    }
+    if (!file.type.startsWith('image/')) {
+      toast('Please choose an image file.');
+      editImageFile.value = '';
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      editImageInput.value = ev.target.result;
+      toast('Image uploaded.');
+    };
+    reader.onerror = () => toast('Could not read the image file.');
+    reader.readAsDataURL(file);
+  };
+
+  cancelBtn.onclick = () => {
+    editPanel.style.display = 'none';
+    editToggle.classList.remove('active');
+    editTitleInput.value = product.title;
+    editImageInput.value = product.image || '';
+  };
+
+  saveBtn.onclick = () => {
+    const newTitle = editTitleInput.value.trim();
+    const newImage = editImageInput.value.trim();
+    if (!newTitle) {
+      toast('Title cannot be empty.');
+      editTitleInput.focus();
+      return;
+    }
+    product.title = newTitle;
+    product.image = newImage;
+    save();
+    // Update the modal's header live
+    headTitle.textContent = newTitle;
+    headImg.style.backgroundImage = newImage ? `url('${newImage.replace(/'/g, "\\'").slice(0, 1500)}')` : '';
+    editPanel.style.display = 'none';
+    editToggle.classList.remove('active');
+    toast('Product updated.');
+    // Trigger re-render of the dashboard so the product list shows the new title/image
+    if (typeof render === 'function') render();
+  };
 
   const wireReplies = () => {
     overlay.querySelectorAll('.reply-btn').forEach(btn => {
@@ -7993,8 +9485,20 @@ function viewProductDetail() {
             <h1>${escapeHtml(product.title)}</h1>
             ${ratingBlock}
             <div class="price-big">$${product.listedPrice.toFixed(2)}</div>
+            ${(() => {
+              const tier = product.sourceTier ? (SOURCE_TIERS[product.sourceTier] || detectSourceTier(product.sourceUrl)) : detectSourceTier(product.sourceUrl);
+              const icon = tier.key === 'premium'
+                ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61z"/></svg>'
+                : (tier.key === 'verified'
+                  ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>'
+                  : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>');
+              return `<div class="detail-trust-badge tier-${tier.key}">
+                ${icon}
+                <span class="dtb-text">${escapeHtml(tier.badge)}</span>
+              </div>`;
+            })()}
             ${product.description ? `<div class="seller-note">"${escapeHtml(product.description)}" &mdash; @${escapeHtml(user.username)}</div>` : ''}
-            <p class="desc">Curated by @${escapeHtml(user.username)}. Once you order, Fonce arranges fulfillment and emails you a tracking label. Estimated delivery 7-14 days.</p>
+            <p class="desc">Curated by @${escapeHtml(user.username)}. Once you order, Fonce arranges fulfillment and emails you a tracking label.</p>
             ${state.currentUser ? `
               <div class="detail-actions">
                 <button class="btn btn-primary btn-block" id="buy-now-btn">Buy now</button>
@@ -8464,6 +9968,49 @@ function viewCartCheckout() {
 }
 
 load();
+
+// ------------------------------------------------------------
+// FONCE IMPORTER — pickup data sent by the Chrome extension
+// URL format: #import?fonce_import=1&source=...&title=...&price=...&image=...&variants=...
+// ------------------------------------------------------------
+(function pickupImportFromExtension() {
+  try {
+    const hash = location.hash || '';
+    if (!hash.startsWith('#import')) return;
+    const qIdx = hash.indexOf('?');
+    if (qIdx === -1) return;
+    const params = new URLSearchParams(hash.slice(qIdx + 1));
+    if (params.get('fonce_import') !== '1') return;
+
+    // Stash on a global so the Add Product view can read it on first render
+    window.__fonceImport = {
+      source: params.get('source') || '',
+      title: params.get('title') || '',
+      image: params.get('image') || '',
+      price: parseFloat(params.get('price') || '') || null,
+      description: params.get('desc') || '',
+      variants: (() => {
+        try { return JSON.parse(params.get('variants') || '[]'); } catch (e) { return []; }
+      })()
+    };
+
+    // Clean the URL so refresh doesn't re-trigger
+    history.replaceState(null, '', location.pathname + location.search);
+
+    // If the user is signed in, jump straight to Add Product. Otherwise the
+    // login flow will pick it up after they sign in (handled below).
+    if (state.currentUser) {
+      state.view = 'addProduct';
+    } else {
+      // Save the intent for after auth
+      window.__fonceImportPending = true;
+      toast('Sign in to finish importing this product.');
+    }
+  } catch (e) {
+    console.warn('[Fonce] Import pickup failed:', e);
+  }
+})();
+
 render();
 
 // Drawer close handlers
